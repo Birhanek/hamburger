@@ -71,15 +71,6 @@
   .hamburger{
     display: block;
   }
-  .searching{
-    display: none;
-  }
-  
-}
-@media screen and (max-width:768px) {
-  .hamburger{
-    display: block;
-  }
   .searching .search{
     display: none;
     position: absolute;
@@ -90,6 +81,15 @@
     height: 2rem;
     background-color: whitesmoke;
   }
+  .searching .search.expanded{
+    display: block;
+  }
+}
+@media screen and (max-width:768px) {
+  .hamburger{
+    display: block;
+  }
+ 
   .clickable__links .menu{
     display: none;
     position: absolute;
@@ -116,9 +116,6 @@
     border-radius: 0.2rem;
   }
   .clickable__links .menu.expanded{
-    display: block;
-  }
-  .searching .search.expanded{
     display: block;
   }
   .header-pos{
