@@ -62,10 +62,17 @@
   list-style-type: none;
   margin: 0 1rem;
 }
-.clickable__links .menu li a{
+.clickable__links .menu li .links{
   text-decoration: none;
   display: block;
   width: 100%;
+}
+.clickable__links .menu li .links.active{
+  background-color: rgb(192, 180, 180);
+  color: orangered;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  text-align: center;
 }
 @media screen and (max-width:600px) {
   .hamburger{
@@ -106,7 +113,7 @@
     text-align: center;
     margin: 0;
   }
-  .clickable__links .menu li a{
+  .clickable__links .menu li .links{
     color: black;
     width: 100%;
     padding: 0.5rem 0;
