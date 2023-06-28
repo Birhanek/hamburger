@@ -6,7 +6,7 @@ const successResponseHandler = require('../middlewares/handler')
 
 const createBlog = async(req,res,next)=>{
     try {
-        const {title,description,reader_minuets} = req.body
+        const {title,description,reader_minutes} = req.body
         const avater = req.file
         if(!title || !description ){
             throw createError(404,'title or description is not found')
@@ -19,7 +19,7 @@ const createBlog = async(req,res,next)=>{
             slug:slugify(title),
             description,
             avater:avater.path,
-            reader_minuets
+            reader_minutes
         })
 
         const blog = create(newBlog)
@@ -36,9 +36,11 @@ const createBlog = async(req,res,next)=>{
 
 const updateBlog = async(req,res,next) => {
     try {
-        const {title,description,reader_minuets} =req.body
+        const {title,description,reader_minutes} =req.body
         const avater = req.file
-        const id = req.params
+        const {id} = req.params
+        console.log(id)
+        
 
         if(!title || !description){
             throw createError(404,'title or description is missing')
@@ -46,7 +48,14 @@ const updateBlog = async(req,res,next) => {
         if(avater && avater.size > Math.pow(1024,2)){
             throw createError(400,'Maximum image size is 2Mb')
         }
-        const updated = await update(id,req.body)
+        const blogFilter = {
+            title,
+            description,
+            reader_minutes,
+            slug:slugify(title),
+            avater:avater.path
+        }
+        const updated = await update(id,blogFilter)
         return successResponseHandler(res,201,'blog successfully updated',updated)
     } catch (error) {
         next(error)
@@ -55,7 +64,8 @@ const updateBlog = async(req,res,next) => {
 
 const deleteBlog = async(req,res,next) => {
     try {
-        const id = req.params
+        const {id} = req.params
+        console.log(id)
         const deletedBlog = await deleteSingleBlog(id)
 
         return successResponseHandler(res,200,'Blog deleted successfully',deletedBlog)
@@ -65,8 +75,8 @@ const deleteBlog = async(req,res,next) => {
 }
 const getBlog = async(req,res,next) => {
     try {
-        const id = req.params
-
+        const {id} = req.params
+        console.log(id)
         const blog = await getSingleBlog(id)
 
         return successResponseHandler(res,200,'Blog returned successfully',blog)

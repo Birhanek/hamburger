@@ -21,7 +21,7 @@ const blogSchema = new mongoose.Schema({
         type:String,
         default:'/public/blog/images/the power of thinking.jpg'
     },
-    reader_minuets:{
+    reader_minutes:{
         type:Number,
         default:1,
     }

@@ -1,14 +1,21 @@
 const express = require("express")
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const environment = require('../src/config/environmental')
-const db = require('../src/config/dbConnection')
+const environment = require('./config/environmental')
+const db = require('./config/dbConnection')
+const blogRouter = require("./routes/blogRouter")
+
+
+
 
 const app = express()
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
+
+
+app.use('/personal/blog/',blogRouter)
 
 app.use((err,req,res,next)=>{
     return res.status(err.status || 500).json({
