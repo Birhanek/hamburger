@@ -1,6 +1,5 @@
 .footers{
-    padding: 1rem;
-    display: block;
+   border-bottom: none;
 }
 .footer{
     height: calc(10vh-5rem);
@@ -41,35 +40,60 @@
 }
 .contact__details{
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
 }
 .contact__details input{
     height: 1.5rem;
     width: 100%;
-    border-radius: 0.5rem;
     outline: none;
+}
+.contact__details input:focus{
+    border: 1px solid green;
+}
+.contact__details .must{
+    color: red;
 }
 .contact__details label{
     font-size: 1rem;
-    font-weight: 800;
+    font-weight: 400;
     font-style: italic;
 }
 .contact__details textarea{
     width: 100%;
-    border-radius: 0.5rem;
+    height: 60px;
     outline: none;
 }
+.contact__details textarea:focus{
+    border: 1px solid green;
+}
 .contact button{
-    width: 50%;
+    width: 80%;
     height: 1.8rem;
-    background-color: orangered;
-    color:whitesmoke;
-    border-radius: 0.5rem;
+    color:white;
     font-size: 1rem;
+    background-color: orangered;
+    border: none;
     cursor: pointer;
 }
+.contact button:hover{
+    background-color: gray;
+    color:white ;
+    outline: none;
+}
 .footer-social{
-    padding: 0.5rem;    
+    padding: 0.5rem; 
+    display: flex; 
+    flex-direction: column;  
+}
+.social{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.social .twitter{
+    color: blue;
 }
 .footer__header{
     text-decoration:underline;
@@ -81,6 +105,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .social{
+        flex-direction: column;
     }
     
 }
